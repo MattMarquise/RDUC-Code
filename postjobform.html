@@ -1,0 +1,238 @@
+<form action="https://v1.nocodeapi.com/devmarq/airtable/RiBnzHulmTPHkgnD?tableName=JobListings" method="POST">
+  <div>
+    <div class="form-group">
+
+      <h3>Job Info: <span style="font-size: small;"><span style="color: red;">*</span>Indicates Required</span></h3>
+      <br>
+
+      <!--MEMBER ID-->
+      <input type="text" name="id" class="form-control" data-ms-member="id" required hidden>
+
+      <!--JOB TITLE-->
+      Job Title<span style="color: red;">*</span>
+      <input id="jobTitle" type="text" name="jobTitle" class="form-control" aria-label="Medium" placeholder="Job Title" style="color: black;" required>
+      <br>
+      <!--LOCATION-->
+      Job Location<span style="color: red;">*</span>
+      <input id="jobLocation" type="text" name="location" class="form-control" aria-label="Medium" placeholder="Job Location" style="color: black;" required>
+      <br>
+      <!--JOB CATEGORY-->
+      Job Category<span style="color: red;">*</span>
+      <br>
+      <select name="dropdown" style="padding: 1%;" required>
+        <option>Choose a category</option>
+        <option value="Computer Architecture">Computer Architecture</option>
+        <option value="Java">Java</option>
+        <option value="Discrete Mathematics">Discrete Mathematics</option>
+      </select>
+      <br><br>
+      <!--ROLE DESCRIPTION-->
+      Role Description<span style="color: red;">*</span>
+      <textarea type="text" name="roleDescription" class="form-control" aria-label="Medium" placeholder="Role description" style="color: black;" required></textarea>
+      <br>
+      <!--QUALIFICATIONS-->
+      Qualifications<span style="color: red;">*</span>
+      <textarea maxLength="500" id="comment" type="text" name="qualifications" class="form-control" aria-label="Medium" placeholder="Qualifications" rows="3" style="color: black;" required></textarea>
+      <div id="the-count_comment" style="">
+      <span id="current_comment">0</span>
+      <span id="maximum_comment"> / 500</span>
+
+      <script>
+        $('#comment').keyup(function () {
+          var characterCount = $(this).val().length,
+          current = $('#current_comment'),
+          maximum = $('#maximum_comment'),
+          theCount = $('#the-count_comment');
+          var maxlength = $(this).attr('maxlength');
+          var changeColor = 0.80 * maxlength;
+          current.text(characterCount);
+
+          if (characterCount > changeColor && characterCount < maxlength) {
+            current.css('color', '#FFA200');
+            current.css('fontWeight', 'bold');
+          }
+          else if (characterCount >= maxlength) {
+            current.css('color', '#B22222');
+            current.css('fontWeight', 'bold');
+          }
+          else {
+            var col = maximum.css('color');
+            var fontW = maximum.css('fontWeight');
+            current.css('color', col);
+            current.css('fontWeight', fontW);
+          }
+        });
+
+        /////// GET THIS TO WORK FOR EARCH
+        $('#requirements').keyup(function () {
+          var characterCount2 = $(this).val().length2,
+          current2 = $('#current_requirements'),
+          maximum2 = $('#maximum_requirements'),
+          theCount2 = $('#the-count_requirements');
+          var maxlength2 = $(this).attr('maxlength2');
+          var changeColor2 = 0.80 * maxlength2;
+          current2.text(characterCount2);
+
+          if (characterCount2 > changeColor2 && characterCount2 < maxlength2) {
+            current2.css('color', '#FFA200');
+            current2.css('fontWeight', 'bold');
+          }
+
+          else if (characterCount2 >= maxlength2) {
+            current2.css('color', '#B22222');
+            current2.css('fontWeight', 'bold');
+          }
+
+          else {
+            var col2 = maximum2.css('color');
+            var fontW2 = maximum2.css('fontWeight');
+            current2.css('color', col2);
+            current2.css('fontWeight', fontW2);
+          }
+        });
+
+      </script>
+
+      <br>
+      <!--COMPANY WEBSITE-->
+      Company Website<span style="color: red;">*</span>
+      <input type="url" name="companyWebsite" class="form-control" aria-label="Medium" placeholder="Enter company website" style="color: black;" required>
+      <br>
+      <!--COMPANY WEBSITE-->
+      Job Requirements<span style="color: red;">*</span>
+      <textarea maxLength="500" id="requirements" type="text" name="requirements" class="form-control" aria-label="Medium" rows="3"></textarea>
+      <div id="the-count_requirements" style="">
+      <span id="current_requirements">0</span>
+      <span id="maximum_requirements"> / 500</span>
+      <br>
+      <!--JOB SALARY-->
+      Job Salary
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter job salary">
+
+      <label for="exampleFormControlInput1">Job Application Deadline</label>
+      <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Enter job application deadline">
+
+      <label for="exampleFormControlInput1">Job Application Email</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter job application email">
+
+
+
+      <br><br>
+
+      <h5>Job Post Preview:</h5>
+
+      <table style="width: 100%;">
+        <tbody>
+          <tr>
+            <td style="padding-top: 1%; padding-bottom: 1%;">
+              <div>
+                <div style='border: 1px solid black; border-radius: 15px; padding-top: 1%; padding-bottom: 0.6%; padding-left: 1%; padding-right: 1%;'>
+                  <div class="jobListCard1" style="padding-left: 1%">
+                    <img src="/img/redhat.jpeg" style="float: left; width: 80px; height: 80px; border-radius: 5px;"/>
+                    <div class="jobListCard2">
+                      <p>
+                        <b><span id="previewJobTitle">Job Title</span> @ <span data-ms-member="company-name">Company Name</span></b>
+                        <br>
+                        <span style='color: #2b2b2b;'><span class='iconify-inline' data-icon='eva:pin-outline' style='color: #2b2b2b;'></span><span id="previewJobLocation">Location</span></span></span> 
+                      </p>
+                    </div>
+                    <img src="/img/bi_arrow-right-tall-circle.svg" style="float: right; width: 80px; height: 80px;"/>
+                  </div>
+                </div>
+              </div> 
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br><br>
+      
+      <h3>Social Post Info:</h3>
+      <p>Each job you post will get posted on all of our social pages at least once a month.</p>
+      
+      <br>
+      
+      <!--TAGLINE-->
+      Tagline<span style="color: red;">*</span>
+      <input type="text" name="tagline" class="form-control" aria-label="Medium" placeholder="Tagline" required>
+      
+      <br>
+      
+      <!--HASHTAGS-->
+      Hashtags (seperate with commas)
+      <input type="text" name="hashtags" class="form-control" aria-label="Medium" placeholder="Hastags">
+      
+      <br>
+
+      <h5>Social Post Preview:</h5>
+
+      <br>
+
+      <div border width="40%" height="auto">
+        <img width="40%" height="auto" src="/img/InstapostJobPost-BG.png">
+      </div>
+
+  </div>
+  <br>
+  <button class="button btn btn-lg btn-block btn-sm button-black" type="submit" style="padding-top: 1%; padding-bottom: 0.8%; width: 250px;">Post job&nbsp;&nbsp;<span class="iconify" data-icon="bi:arrow-right-circle" style="font-size: 20px; vertical-align: middle;"></span></button>
+</form>
+
+<p id="alert"></p>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script>
+
+    $('form').on('submit', function(e) {
+        e.preventDefault();
+        console.log( $(this).serialize() )
+        let data = $(this).serialize();
+
+        $.ajax({
+            url: "https://v1.nocodeapi.com/punch__lines/telegram/LUYPxptDJWdtRcCT",
+            data: data,
+            method: "post",
+            success: (res) => $('button').html('Message Sent!')
+        }).fail( err => $('button').html('Something bad happened') );
+
+    })
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var requestOptions = {
+        method: "post",
+        headers: myHeaders,
+        redirect: "follow",
+        body: JSON.stringify([{"title":"Example 2","website":"https://example2.com"}])
+    };
+
+    fetch("https://v1.nocodeapi.com/devmarq/airtable/RiBnzHulmTPHkgnD?tableName=JobListings", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+</script>
+
+<script>
+  $(function () {
+    var timesSubmitted = 0;
+    var maxSubmits = 5;
+    var intervalMilliseconds = 10000; // for testing   
+    var interval;   
+    $('input[type=submit]').click(function (event) {
+      if (!interval) {
+        interval = setTimeout(function () {
+          interval = undefined;
+          timesSubmitted = 0;
+          $('#alert').append('TIMER RESET. Submit again.<br />')
+        }, intervalMilliseconds);
+      }
+      timesSubmitted ++;
+      if (timesSubmitted > maxSubmits) {
+          $('#alert').append('NO GO YO!<br />')
+      } else {
+          $('#alert').append('valid<br />')   
+      }
+      event.preventDefault();        
+    });        
+  });
+</script>
