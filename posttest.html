@@ -1,0 +1,71 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<div>
+  <form>
+
+    <!--COMPANY-->
+    Company<span style="color: red;">*</span>
+    <input id="company" type="text" name="company" class="form-control" aria-label="Medium" placeholder="Company" style="color: black;" required>
+    
+    <br>
+
+    <!--COMPANY DESCRIPTION-->
+    COMPANY DESCRIPTION<span style="color: red;">*</span>
+    <input id="companyDescription" type="text" name="companyDescription" class="form-control" aria-label="Medium" placeholder="Company Description" style="color: black;" required>
+    
+    <br>
+
+    <!--ROLE-->
+    ROLE<span style="color: red;">*</span>
+    <input id="role" type="text" name="role" class="form-control" aria-label="Medium" placeholder="Role" style="color: black;" required>
+    
+    <br>
+
+    <!--ROLE DESCRIPTION-->
+    ROLE DESCRIPTION<span style="color: red;">*</span>
+    <input id="roleDescription" type="text" name="roleDescription" class="form-control" aria-label="Medium" placeholder="Role Description" style="color: black;" required>
+    
+    <br>
+
+    <!--JOB LOCATION-->
+    JOB LOCATION<span style="color: red;">*</span>
+    <input id="jobLocation" type="text" name="jobLocation" class="form-control" aria-label="Medium" placeholder="Location" style="color: black;" required>
+    
+    <br><br>
+
+    <button class="button btn btn-lg btn-block btn-sm button-black" type="submit" style="padding-top: 1%; padding-bottom: 0.8%; width: 250px;">Post job&nbsp;&nbsp;<span class="iconify" data-icon="bi:arrow-right-circle" style="font-size: 20px; vertical-align: middle;"></span></button>
+
+  </form>
+</div>
+
+post form data to airtable database through nocodeapi
+<script>
+  $(document).ready(function() {
+    $('form').submit(function(e) {
+      e.preventDefault();
+      var form = $(this);
+      var url = 'https://v1.nocodeapi.com/devmarq/airtable/RiBnzHulmTPHkgnD?tableName=JobListings';
+      var data = {
+        "fields": {
+          "Company": $('#company').val(),
+          "Company Description": $('#companyDescription').val(),
+          "Role": $('#role').val(),
+          "Role Description": $('#roleDescription').val(),
+          "Job Location": $('#jobLocation').val()
+        }
+      };
+      $.ajax({
+        url: url,
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function(data) {
+          console.log('success');
+          form.trigger('reset');
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+    });
+  });
